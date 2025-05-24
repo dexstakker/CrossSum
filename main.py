@@ -1,5 +1,4 @@
-
-#Import Tkinter library
+# Code to solve CrossSum problems keyed in via the UI laid out below
 import tkinter as tk
 from tkinter import *
 from tkinter import ttk
@@ -95,6 +94,21 @@ txtvar34.set("0") # Set initial text
 
 
 # ROW 5
+txtvar05 = tk.StringVar()
+textbox05 = ttk.Entry(win, textvariable=txtvar05, width=3)
+textbox05.grid(column=0, row=5)
+txtvar05.set("0") # Set initial text
+
+txtvar15 = tk.StringVar()
+textbox15 = ttk.Entry(win, textvariable=txtvar15, width=3)
+textbox15.grid(column=1, row=5)
+txtvar15.set("0") # Set initial text
+
+txtvar25 = tk.StringVar()
+textbox25 = ttk.Entry(win, textvariable=txtvar25, width=3)
+textbox25.grid(column=2, row=5)
+txtvar25.set("0") # Set initial text
+
 
 
 win.mainloop()

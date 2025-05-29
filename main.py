@@ -1,11 +1,61 @@
+from typing import List
 # Code to solve CrossSum problems keyed in via the UI laid out below
+import itertools
 import tkinter as tk
 from tkinter import *
 from tkinter import ttk
+import operator
 #Create an instance of Tkinter frame or window
 win= tk.Tk()
 #Set the geometry of tkinter frame
 win.geometry("750x250")
+
+ops = {
+    '+': operator.add,
+    '-': operator.sub,
+    '*': operator.mul,
+    '/': operator.truediv,
+    '**': operator.pow,
+    '%': operator.mod,
+}
+
+def is_quick(s: str) -> bool:
+    if s == '/' or s == '*':
+        return True
+    else:
+        return False
+
+def calc_part(part1: int, part2: int, op:str) -> tuple[bool, int]:
+    if op == '/' and int(part1) % int(part2) != 0:
+        return False, 0
+
+    return True, ops[op](int(part1), int(part2))
+
+
+def calc_line(a: int, b: int, c: int, op1: str, op2: str, answer:int) -> tuple[bool, int]:
+    # So, we need to calculate the two totals, factoring in the order of precedence
+    left = right = None
+    total = 0
+    if is_quick(op1):
+        # Solve the left
+        left = calc_part(a, b, op1)
+        if left[0] is False:
+            return False, 0
+        # Solve the right and we're done
+        total = calc_part(left[1], c, op2)
+        if total[0] is False:
+            return False, 0
+    else:
+        right = calc_part(b, c, op2)
+        if right[0] is False:
+            return False, 0
+        total = calc_part(a, right[1], op1)
+        if total[0] is False:
+            return False, 0
+
+    return total[1] == answer, total[1]
+
+#def calc_board() -> bool:
 
 
 # ROW 1
@@ -109,6 +159,53 @@ textbox25 = ttk.Entry(win, textvariable=txtvar25, width=3)
 textbox25.grid(column=2, row=5)
 txtvar25.set("0") # Set initial text
 
+
+
+# Generate all permutations of numbers 1 to 9
+numbers = list(range(1, 10))
+permutations = list(itertools.permutations(numbers))
+
+# Example: print the total number and first 5 permutations
+count = 1
+for perm in permutations:
+    # Step through each and exercise the tests against it
+    # 1. Across top line
+    res = calc_line(perm[0], perm[1], perm[2], combobox00.get(), combobox10.get(), int(textbox30.get()))
+    if res[0] is False:
+        continue
+
+    # 2. Across 2nd line
+    res = calc_line(perm[3], perm[4], perm[5], combobox02.get(), combobox12.get(), int(textbox32.get()))
+    if res[0] is False:
+        continue
+
+    # 3. Across 3rd line
+    res = calc_line(perm[6], perm[7], perm[8], combobox04.get(), combobox14.get(), int(textbox34.get()))
+    if res[0] is False:
+        continue
+
+    # 4. Down the 1st column -- Incomplete
+    res = calc_line(perm[0], perm[3], perm[6], combobox01.get(), combobox03.get(), int(textbox05.get()))
+    if res[0] is False:
+        continue
+
+    # 5. Down the 2nd column
+    res = calc_line(perm[1], perm[4], perm[7], combobox11.get(), combobox13.get(), int(textbox15.get()))
+    if res[0] is False:
+        continue
+    # If we made it here, then we have a winner
+    print("Winner: ", perm)
+
+    print("Number of permutations: ", count)
+
+    # 6. Down the 3rd column
+    res = calc_line(perm[1], perm[4], perm[7], combobox21.get(), combobox23.get(), int(textbox25.get()))
+    if res[0] is False:
+        continue
+
+    # If we made it here, then we have a winner
+    count += 1
+print("Number of permutations: ", count)
 
 
 win.mainloop()

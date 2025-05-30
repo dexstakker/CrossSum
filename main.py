@@ -32,29 +32,6 @@ def calc_part(part1: int, part2: int, op:str) -> tuple[bool, int]:
     return True, ops[op](int(part1), int(part2))
 
 
-def calc_line(a: int, b: int, c: int, op1: str, op2: str, answer:int) -> tuple[bool, int]:
-    # So, we need to calculate the two totals, factoring in the order of precedence
-    left = right = None
-    total = 0
-    if is_quick(op1):
-        # Solve the left
-        left = calc_part(a, b, op1)
-        if left[0] is False:
-            return False, 0
-        # Solve the right and we're done
-        total = calc_part(left[1], c, op2)
-        if total[0] is False:
-            return False, 0
-    else:
-        right = calc_part(b, c, op2)
-        if right[0] is False:
-            return False, 0
-        total = calc_part(a, right[1], op1)
-        if total[0] is False:
-            return False, 0
-
-    return total[1] == answer, total[1]
-
 def calc_line2(a: int, b: int, c: int, op1: str, op2: str, answer:int) -> tuple[bool, int]:
     # So, we need to calculate the two totals, factoring in the order of precedence
 
@@ -68,8 +45,6 @@ def calc_line2(a: int, b: int, c: int, op1: str, op2: str, answer:int) -> tuple[
 
     return total[1] == answer, total[1]
 
-#def calc_board() -> bool:
-
 
 # ROW 1
 combobox00= ttk.Combobox(win,state="readonly", width=5)
@@ -79,19 +54,19 @@ combobox00.grid(column=0, row=0)
 
 combobox10= ttk.Combobox(win,state="readonly", width=5)
 combobox10['values']=('+', '-', '*', '/')
-combobox10.current(1)
+combobox10.current(0)
 combobox10.grid(column=1, row=0)
 
 txtvar30 = tk.StringVar()
 textbox30 = ttk.Entry(win, textvariable=txtvar30, width=3)
 textbox30.grid(column=3, row=0)
-txtvar30.set("10") # Set initial text
+txtvar30.set("0") # Set initial text
 
 
 # ROW 1
 combobox01= ttk.Combobox(win,state="readonly", width=5)
 combobox01['values']=('+', '-', '*', '/')
-combobox01.current(1)
+combobox01.current(0)
 combobox01.grid(column=0, row=1)
 
 combobox11= ttk.Combobox(win,state="readonly", width=5)
@@ -101,7 +76,7 @@ combobox11.grid(column=1, row=1)
 
 combobox21= ttk.Combobox(win,state="readonly", width=5)
 combobox21['values']=('+', '-', '*', '/')
-combobox21.current(1)
+combobox21.current(0)
 combobox21.grid(column=2, row=1)
 
 
@@ -113,29 +88,29 @@ combobox02.grid(column=0, row=2)
 
 combobox12= ttk.Combobox(win,state="readonly", width=5)
 combobox12['values']=('+', '-', '*', '/')
-combobox12.current(2)
+combobox12.current(0)
 combobox12.grid(column=1, row=2)
 
 txtvar32 = tk.StringVar()
 textbox32 = ttk.Entry(win, textvariable=txtvar32, width=3)
 textbox32.grid(column=3, row=2)
-txtvar32.set("36") # Set initial text
+txtvar32.set("0") # Set initial text
 
 
 # ROW 3
 combobox03= ttk.Combobox(win,state="readonly", width=5)
 combobox03['values']=('+', '-', '*', '/')
-combobox03.current(1)
+combobox03.current(0)
 combobox03.grid(column=0, row=3)
 
 combobox13= ttk.Combobox(win,state="readonly", width=5)
 combobox13['values']=('+', '-', '*', '/')
-combobox13.current(2)
+combobox13.current(0)
 combobox13.grid(column=1, row=3)
 
 combobox23= ttk.Combobox(win,state="readonly", width=5)
 combobox23['values']=('+', '-', '*', '/')
-combobox23.current(1)
+combobox23.current(0)
 combobox23.grid(column=2, row=3)
 
 
@@ -153,19 +128,19 @@ combobox14.grid(column=1, row=4)
 txtvar34 = tk.StringVar()
 textbox34 = ttk.Entry(win, textvariable=txtvar34, width=3)
 textbox34.grid(column=3, row=4)
-txtvar34.set("9") # Set initial text
+txtvar34.set("0") # Set initial text
 
 
 # ROW 5
 txtvar05 = tk.StringVar()
 textbox05 = ttk.Entry(win, textvariable=txtvar05, width=3)
 textbox05.grid(column=0, row=5)
-txtvar05.set("1") # Set initial text
+txtvar05.set("0") # Set initial text
 
 txtvar15 = tk.StringVar()
 textbox15 = ttk.Entry(win, textvariable=txtvar15, width=3)
 textbox15.grid(column=1, row=5)
-txtvar15.set("39") # Set initial text
+txtvar15.set("0") # Set initial text
 
 txtvar25 = tk.StringVar()
 textbox25 = ttk.Entry(win, textvariable=txtvar25, width=3)

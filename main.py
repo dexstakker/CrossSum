@@ -190,9 +190,13 @@ def analyze_cross_sum():
         # If we made it here, then we have a winner
         print("ANSWER: ", perm)
 
-        # If we made it here, then we have a winner
-        count += 1
-    print("Number of permutations: ", count)
+        # Print a formatted version of the grid
+        i = 0
+        while i < 3:
+            t = (i * 3)
+            print(perm[t+0], " ", perm[t+1], " ", perm[t+2])
+            i += 1
+        print()
 
 exeButton = ttk.Button(win, text="Do CrossSum", command=analyze_cross_sum)
 exeButton.grid(column=6, row=5)

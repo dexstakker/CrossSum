@@ -45,22 +45,37 @@ def calc_line2(a: int, b: int, c: int, op1: str, op2: str, answer:int) -> tuple[
 
     return total[1] == answer, total[1]
 
+entry_style = ttk.Style()
+
+entry_style.configure('style.TEntry', fieldbackground="black", foreground="white")
 
 # ROW 1
-combobox00= ttk.Combobox(win,state="readonly", width=5)
-combobox00['values']=('+', '-', '*', '/')
-combobox00.current(0)
-combobox00.grid(column=0, row=0)
+textbox00 = ttk.Entry(win, width=3, style='style.TEntry')
+textbox00.grid(column=0, row=0)
+textbox00.insert(index=0, string="")
 
 combobox10= ttk.Combobox(win,state="readonly", width=5)
 combobox10['values']=('+', '-', '*', '/')
 combobox10.current(0)
 combobox10.grid(column=1, row=0)
 
-txtvar30 = tk.StringVar()
-textbox30 = ttk.Entry(win, textvariable=txtvar30, width=3)
-textbox30.grid(column=3, row=0)
-txtvar30.set("0") # Set initial text
+textbox20 = ttk.Entry(win, width=3, style='style.TEntry')
+textbox20.grid(column=2, row=0)
+textbox20.insert(index=0, string="")
+
+combobox30= ttk.Combobox(win,state="readonly", width=5)
+combobox30['values']=('+', '-', '*', '/')
+combobox30.current(0)
+combobox30.grid(column=3, row=0)
+
+textbox40 = ttk.Entry(win, width=3, style='style.TEntry')
+textbox40.grid(column=4, row=0)
+textbox40.insert(index=0, string="")
+
+txtvar50 = tk.StringVar()
+textbox50 = ttk.Entry(win, textvariable=txtvar50, width=3)
+textbox50.grid(column=5, row=0)
+txtvar50.set("0") # Set initial text
 
 
 # ROW 1
@@ -69,32 +84,44 @@ combobox01['values']=('+', '-', '*', '/')
 combobox01.current(0)
 combobox01.grid(column=0, row=1)
 
-combobox11= ttk.Combobox(win,state="readonly", width=5)
-combobox11['values']=('+', '-', '*', '/')
-combobox11.current(0)
-combobox11.grid(column=1, row=1)
-
 combobox21= ttk.Combobox(win,state="readonly", width=5)
 combobox21['values']=('+', '-', '*', '/')
 combobox21.current(0)
 combobox21.grid(column=2, row=1)
 
+combobox41= ttk.Combobox(win,state="readonly", width=5)
+combobox41['values']=('+', '-', '*', '/')
+combobox41.current(0)
+combobox41.grid(column=4, row=1)
+
 
 # ROW 2
-combobox02= ttk.Combobox(win,state="readonly", width=5)
-combobox02['values']=('+', '-', '*', '/')
-combobox02.current(0)
-combobox02.grid(column=0, row=2)
+textbox02 = ttk.Entry(win, width=3, style='style.TEntry')
+textbox02.grid(column=0, row=2)
+textbox02.insert(index=0, string="")
 
 combobox12= ttk.Combobox(win,state="readonly", width=5)
 combobox12['values']=('+', '-', '*', '/')
 combobox12.current(0)
 combobox12.grid(column=1, row=2)
 
-txtvar32 = tk.StringVar()
-textbox32 = ttk.Entry(win, textvariable=txtvar32, width=3)
-textbox32.grid(column=3, row=2)
-txtvar32.set("0") # Set initial text
+textbox22 = ttk.Entry(win, width=3, style='style.TEntry')
+textbox22.grid(column=2, row=2)
+textbox22.insert(index=0, string="")
+
+combobox32= ttk.Combobox(win,state="readonly", width=5)
+combobox32['values']=('+', '-', '*', '/')
+combobox32.current(0)
+combobox32.grid(column=3, row=2)
+
+textbox42 = ttk.Entry(win, width=3, style='style.TEntry')
+textbox42.grid(column=4, row=2)
+textbox42.insert(index=0, string="")
+
+txtvar52 = tk.StringVar()
+textbox52 = ttk.Entry(win, textvariable=txtvar52, width=3)
+textbox52.grid(column=5, row=2)
+txtvar52.set("0") # Set initial text
 
 
 # ROW 3
@@ -103,32 +130,44 @@ combobox03['values']=('+', '-', '*', '/')
 combobox03.current(0)
 combobox03.grid(column=0, row=3)
 
-combobox13= ttk.Combobox(win,state="readonly", width=5)
-combobox13['values']=('+', '-', '*', '/')
-combobox13.current(0)
-combobox13.grid(column=1, row=3)
-
 combobox23= ttk.Combobox(win,state="readonly", width=5)
 combobox23['values']=('+', '-', '*', '/')
 combobox23.current(0)
 combobox23.grid(column=2, row=3)
 
+combobox43= ttk.Combobox(win,state="readonly", width=5)
+combobox43['values']=('+', '-', '*', '/')
+combobox43.current(0)
+combobox43.grid(column=4, row=3)
+
 
 # ROW 4
-combobox04= ttk.Combobox(win,state="readonly", width=5)
-combobox04['values']=('+', '-', '*', '/')
-combobox04.current(0)
-combobox04.grid(column=0, row=4)
+textbox04 = ttk.Entry(win, width=3, style='style.TEntry')
+textbox04.grid(column=0, row=4)
+textbox04.insert(index=0, string="")
 
-combobox14= ttk.Combobox(win,state="readonly", width=5)
+combobox14 = ttk.Combobox(win,state="readonly", width=5)
 combobox14['values']=('+', '-', '*', '/')
 combobox14.current(0)
 combobox14.grid(column=1, row=4)
 
-txtvar34 = tk.StringVar()
-textbox34 = ttk.Entry(win, textvariable=txtvar34, width=3)
-textbox34.grid(column=3, row=4)
-txtvar34.set("0") # Set initial text
+textbox24 = ttk.Entry(win, width=3, style='style.TEntry')
+textbox24.grid(column=2, row=4)
+textbox24.insert(index=0, string="")
+
+combobox34= ttk.Combobox(win,state="readonly", width=5)
+combobox34['values']=('+', '-', '*', '/')
+combobox34.current(0)
+combobox34.grid(column=3, row=4)
+
+textbox44 = ttk.Entry(win, width=3, style='style.TEntry')
+textbox44.grid(column=4, row=4)
+textbox44.insert(index=0, string="")
+
+txtvar54 = tk.StringVar()
+textbox54 = ttk.Entry(win, textvariable=txtvar54, width=3)
+textbox54.grid(column=5, row=4)
+txtvar54.set("0") # Set initial text
 
 
 # ROW 5
@@ -137,15 +176,15 @@ textbox05 = ttk.Entry(win, textvariable=txtvar05, width=3)
 textbox05.grid(column=0, row=5)
 txtvar05.set("0") # Set initial text
 
-txtvar15 = tk.StringVar()
-textbox15 = ttk.Entry(win, textvariable=txtvar15, width=3)
-textbox15.grid(column=1, row=5)
-txtvar15.set("0") # Set initial text
-
 txtvar25 = tk.StringVar()
 textbox25 = ttk.Entry(win, textvariable=txtvar25, width=3)
 textbox25.grid(column=2, row=5)
 txtvar25.set("0") # Set initial text
+
+txtvar45 = tk.StringVar()
+textbox45 = ttk.Entry(win, textvariable=txtvar45, width=3)
+textbox45.grid(column=4, row=5)
+txtvar45.set("0") # Set initial text
 
 def analyze_cross_sum():
     print("analyze_cross_sum()")
@@ -158,17 +197,17 @@ def analyze_cross_sum():
     for perm in permutations:
         # Step through each and exercise the tests against it
         # 1. Across top line
-        res = calc_line2(perm[0], perm[1], perm[2], combobox00.get(), combobox10.get(), int(textbox30.get()))
+        res = calc_line2(perm[0], perm[1], perm[2], combobox10.get(), combobox30.get(), int(textbox50.get()))
         if res[0] is False:
             continue
 
         # 2. Across 2nd line
-        res = calc_line2(perm[3], perm[4], perm[5], combobox02.get(), combobox12.get(), int(textbox32.get()))
+        res = calc_line2(perm[3], perm[4], perm[5], combobox12.get(), combobox32.get(), int(textbox52.get()))
         if res[0] is False:
             continue
 
         # 3. Across 3rd line
-        res = calc_line2(perm[6], perm[7], perm[8], combobox04.get(), combobox14.get(), int(textbox34.get()))
+        res = calc_line2(perm[6], perm[7], perm[8], combobox14.get(), combobox34.get(), int(textbox54.get()))
         if res[0] is False:
             continue
 
@@ -178,17 +217,26 @@ def analyze_cross_sum():
             continue
 
         # 5. Down the 2nd column
-        res = calc_line2(perm[1], perm[4], perm[7], combobox11.get(), combobox13.get(), int(textbox15.get()))
+        res = calc_line2(perm[1], perm[4], perm[7], combobox21.get(), combobox23.get(), int(textbox25.get()))
         if res[0] is False:
             continue
 
         # 6. Down the 3rd column
-        res = calc_line2(perm[2], perm[5], perm[8], combobox21.get(), combobox23.get(), int(textbox25.get()))
+        res = calc_line2(perm[2], perm[5], perm[8], combobox41.get(), combobox43.get(), int(textbox45.get()))
         if res[0] is False:
             continue
 
         # If we made it here, then we have a winner
         print("ANSWER: ", perm)
+        textbox00.insert(0, str(perm[0]))
+        textbox20.insert(0, str(perm[1]))
+        textbox40.insert(0, str(perm[2]))
+        textbox02.insert(0, str(perm[3]))
+        textbox22.insert(0, str(perm[4]))
+        textbox42.insert(0, str(perm[5]))
+        textbox04.insert(0, str(perm[6]))
+        textbox24.insert(0, str(perm[7]))
+        textbox44.insert(0, str(perm[8]))
 
         # Print a formatted version of the grid
         i = 0
@@ -197,6 +245,7 @@ def analyze_cross_sum():
             print(perm[t+0], " ", perm[t+1], " ", perm[t+2])
             i += 1
         print()
+    print("For loop finished")
 
 exeButton = ttk.Button(win, text="Do CrossSum", command=analyze_cross_sum)
 exeButton.grid(column=6, row=5)
